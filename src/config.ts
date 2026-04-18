@@ -55,8 +55,8 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  titleLine1: "TU ESENCIA",
-  titleLine2: "DEFINE TU",
+  titleLine1: "TU DEFINES",
+  titleLine2: "TU ESENCIA",
   subtitle: "Descubre nuestra colección exclusiva de fragancias premium diseñadas para dejar una impresión inolvidable. Cada nota cuenta tu historia.",
   ctaText: "Ver Colección",
   ctaHref: "#products",
@@ -307,8 +307,8 @@ export const footerConfig: FooterConfig = {
     },
   ],
   contact: {
-    address: "Av. Paseo de la Reforma 250, Ciudad de México, CDMX",
-    phone: "+52 55 1234 5678",
+    address: "Barinas-Venezuela",
+    phone: "+58 424-1234567",
     email: "hola@essenceperfumes.com",
   },
   legalLinks: [
@@ -316,7 +316,7 @@ export const footerConfig: FooterConfig = {
     { label: "Política de Privacidad", href: "#" },
     { label: "Aviso Legal", href: "#" },
   ],
-  copyrightText: "Essence Perfumes. Todos los derechos reservados.",
+  copyrightText: "MIRF Essence. Todos los derechos reservados.",
   decorativeText: "ESSENCE",
   whatsappCta: "Pedir por WhatsApp",
   whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
@@ -334,6 +334,6 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   title: "Essence - Perfumes Premium | Fragancias de Lujo",
-  description: "Descubre nuestra colección exclusiva de fragancias premium. Perfumes de autor con ingredientes finos del mundo. Envío gratis en compras mayores a $1,500.",
+  description: "Descubre nuestra colección exclusiva de fragancias premium. Perfumes de autor con ingredientes finos del mundo. contactanos y acordamos tu pedido por WhatsApp.",
   language: "es",
 };

@@ -1,88 +1,128 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Hero from './sections/Hero';
-import ProductShowcase from './sections/ProductShowcase';
-import ColorPalette from './sections/ColorPalette';
-import Finale from './sections/Finale';
-import Footer from './sections/Footer';
-import Navigation from './components/Navigation';
-import CustomCursor from './components/CustomCursor';
-import WhatsAppFloat from './components/WhatsAppFloat';
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+import Navbar from "./components/Navbar"
+import CustomCursor from './components/CustomCursor'
+import WhatsAppFloat from './components/WhatsAppFloat'
+
+import Hero from './sections/Hero'
+import ProductShowcase from './sections/ProductShowcase'
+import ColorPalette from './sections/ColorPalette'
+import Finale from './sections/Finale'
+import Footer from './sections/Footer'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function App() {
-  const mainRef = useRef<HTMLDivElement>(null);
-  const triggersRef = useRef<ScrollTrigger[]>([]);
+
+  const mainRef = useRef<HTMLDivElement>(null)
+  const triggersRef = useRef<ScrollTrigger[]>([])
 
   useEffect(() => {
-    // Velocity-based skew effect
-    let currentSkew = 0;
-    let targetSkew = 0;
-    
+
+    let currentSkew = 0
+    let targetSkew = 0
+
     const updateSkew = () => {
-      currentSkew += (targetSkew - currentSkew) * 0.1;
+
+      currentSkew += (targetSkew - currentSkew) * 0.1
+
       if (mainRef.current) {
-        mainRef.current.style.transform = `skewY(${currentSkew}deg)`;
+        mainRef.current.style.transform = `skewY(${currentSkew}deg)`
       }
-      requestAnimationFrame(updateSkew);
-    };
-    
+
+      requestAnimationFrame(updateSkew)
+
+    }
+
     const handleScroll = () => {
-      const scrollSpeed = Math.abs(window.scrollY - (window as any).lastScrollY || 0);
-      targetSkew = Math.min(scrollSpeed * 0.02, 3);
-      (window as any).lastScrollY = window.scrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    updateSkew();
-    
-    // Reset skew when scroll stops
-    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+      const scrollSpeed = Math.abs(
+        window.scrollY - ((window as any).lastScrollY || 0)
+      )
+
+      targetSkew = Math.min(scrollSpeed * 0.02, 3)
+
+      ;(window as any).lastScrollY = window.scrollY
+
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    updateSkew()
+
+    let scrollTimeout: ReturnType<typeof setTimeout>
+
     const resetSkew = () => {
-      clearTimeout(scrollTimeout);
+
+      clearTimeout(scrollTimeout)
+
       scrollTimeout = setTimeout(() => {
-        targetSkew = 0;
-      }, 100);
-    };
-    window.addEventListener('scroll', resetSkew, { passive: true });
-    
+
+        targetSkew = 0
+
+      }, 100)
+
+    }
+
+    window.addEventListener('scroll', resetSkew, { passive: true })
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('scroll', resetSkew);
-      triggersRef.current.forEach(trigger => trigger.kill());
-      triggersRef.current = [];
-    };
-  }, []);
+
+      window.removeEventListener('scroll', handleScroll)
+
+      window.removeEventListener('scroll', resetSkew)
+
+      triggersRef.current.forEach(trigger => trigger.kill())
+
+      triggersRef.current = []
+
+    }
+
+  }, [])
 
   return (
-    <div className="relative bg-black min-h-screen overflow-x-hidden">
+
+    <div className="relative bg-[#0B0B0C] min-h-screen overflow-x-hidden">
+
       {/* Grain overlay */}
       <div className="grain-overlay" />
-      
+
       {/* Custom cursor */}
       <CustomCursor />
-      
-      {/* Navigation */}
-      <Navigation />
-      
+
+      {/* Navbar premium */}
+      <Navbar />
+
       {/* Main content */}
-      <main ref={mainRef} className="relative transition-transform duration-100 ease-out will-change-transform">
+      <main
+        ref={mainRef}
+        className="relative transition-transform duration-100 ease-out will-change-transform"
+      >
+
         <Hero />
+
         <ProductShowcase />
+
         <ColorPalette />
+
         <Finale />
+
         <Footer />
+
       </main>
-      
-      {/* Floating WhatsApp button */}
-      <WhatsAppFloat 
-        phoneNumber="521234567890" 
-        message="Hola, estoy interesado en los perfumes Essence. Me gustaría recibir más información."
+
+      {/* Floating WhatsApp */}
+      <WhatsAppFloat
+        phoneNumber="573001234567"
+        message="Hola, estoy interesado en los perfumes MIRF essence. Me gustaría recibir más información."
       />
+
     </div>
-  );
+
+  )
+
 }
 
-export default App;
+export default App
