@@ -51,7 +51,7 @@ export interface HeroConfig {
   backgroundImage: string;
   gridRows: number;
   gridCols: number;
-  pinkCells: { row: number; col: number }[];
+  goldCells: { row: number; col: number }[];
 }
 
 export const heroConfig: HeroConfig = {
@@ -63,7 +63,7 @@ export const heroConfig: HeroConfig = {
   backgroundImage: "/images/hero.jpg",
   gridRows: 6,
   gridCols: 8,
-  pinkCells: [
+  goldCells: [
     { row: 0, col: 2 },
     { row: 1, col: 5 },
     { row: 2, col: 0 },

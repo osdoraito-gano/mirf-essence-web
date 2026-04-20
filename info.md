@@ -76,7 +76,7 @@ export const heroConfig: HeroConfig = {
   backgroundImage: "",    // Path to hero collage image: "/images/hero.jpg"
   gridRows: 6,            // Number of grid rows (default: 6)
   gridCols: 8,            // Number of grid columns (default: 8)
-  pinkCells: [],          // Array of { row: number, col: number } for accent-colored cells
+  goldCells: [],          // Array of { row: number, col: number } for accent-colored cells
                           // These cells show solid pink instead of the background image
 };
 ```
