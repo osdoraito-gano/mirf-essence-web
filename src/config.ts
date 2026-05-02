@@ -1,315 +1,209 @@
 // ============================================================================
-// SITE CONFIGURATION - ESSENCE PERFUMES PREMIUM
-// ============================================================================
-// Embudo de ventas para perfumes y lociones con redirección a WhatsApp
+// SITE CONFIGURATION - MIRF ESSENCE
 // ============================================================================
 
-// Número de WhatsApp para pedidos (cambiar por tu número real)
-const WHATSAPP_NUMBER = "521234567890";
-const WHATSAPP_MESSAGE = "Hola, estoy interesado en los perfumes Essence. Me gustaría recibir más información.";
+// Número de WhatsApp para pedidos (CAMBIAR por el número real)
+const WHATSAPP_NUMBER = "+584125592798";
+const WHATSAPP_MESSAGE = "Hola MIRF essence, estoy interesado en sus perfumes. Me gustaría recibir más información.";
 
-// Enlaces de pago (ejemplos - reemplazar con tus enlaces reales)
-const PAYMENT_LINK = "https://pay.stripe.com/..."; // Tu enlace de pasarela de pago
+// ----------------------------------------------------------------------------
+// Site Metadata
+// ----------------------------------------------------------------------------
+export const siteConfig = {
+  title: "MIRF essence · Perfumería de lujo accesible",
+  description: "Descubre fragancias exclusivas en presentaciones cilíndricas 30ml, 60ml, 100ml y envases AAA. Tu defines tu esencia.",
+  language: "es",
+};
 
 // ----------------------------------------------------------------------------
 // Navigation
 // ----------------------------------------------------------------------------
-
-export interface NavLink {
-  label: string;
-  href: string;
-}
-
-export interface NavigationConfig {
-  logo: string;
-  logoAccent: string;
-  navLinks: NavLink[];
-  ctaText: string;
-}
-
-export const navigationConfig: NavigationConfig = {
-  logo: "ESSENCE",
-  logoAccent: "®",
+export const navigationConfig = {
+  logo: "MIRF",
+  logoAccent: "essence",
   navLinks: [
-    { label: "Colección", href: "#products" },
-    { label: "Fragancias", href: "#palette" },
-    { label: "Nosotros", href: "#finale" },
+    { label: "Inicio", href: "#hero" },
+    { label: "Catálogo", href: "#catalogo" },
+    { label: "Esencia", href: "#finale" },
   ],
-  ctaText: "Comprar Ahora",
+  ctaText: "Pedir Ahora",
 };
 
 // ----------------------------------------------------------------------------
-// Hero Section
+// Hero Cinematic
 // ----------------------------------------------------------------------------
-
-export interface HeroConfig {
-  titleLine1: string;
-  titleLine2: string;
-  subtitle: string;
-  ctaText: string;
-  ctaHref: string;
-  backgroundImage: string;
-  gridRows: number;
-  gridCols: number;
-  goldCells: { row: number; col: number }[];
-}
-
-export const heroConfig: HeroConfig = {
-  titleLine1: "TU DEFINES",
-  titleLine2: "TU ESENCIA",
-  subtitle: "Descubre nuestra colección exclusiva de fragancias premium diseñadas para dejar una impresión inolvidable. Cada nota cuenta tu historia.",
-  ctaText: "Ver Colección",
-  ctaHref: "#products",
-  backgroundImage: "/images/hero.jpg",
-  gridRows: 6,
-  gridCols: 8,
-  goldCells: [
-    { row: 0, col: 2 },
-    { row: 1, col: 5 },
-    { row: 2, col: 0 },
-    { row: 3, col: 7 },
-    { row: 4, col: 3 },
-    { row: 5, col: 6 },
+export const heroCinematicConfig = {
+  slides: [
+    {
+      id: 1,
+      titleLine1: "TU DEFINES",
+      titleLine2: "TU ESENCIA",
+      subtitle: "Fragancias exclusivas que reflejan tu estilo. Lujo accesible en cada nota.",
+      ctaText: "Descubrir",
+      ctaHref: "#catalogo",
+      image: "/images/hero-slide1.png",
+    },
+    {
+      id: 2,
+      titleLine1: "ENCUENTRA",
+      titleLine2: "TU AROMA",
+      subtitle: "Cada fragancia está diseñada para una ocasión especial. Encuentra la tuya.",
+      ctaText: "Explorar Notas",
+      ctaHref: "#products",
+      image: "/images/hero-slide2.png",
+    },
+    {
+      id: 3,
+      titleLine1: "EXPRESA",
+      titleLine2: "TU PODER",
+      subtitle: "Porque el lujo no es un precio, es una actitud. Vive la experiencia MIRF.",
+      ctaText: "Ver Colección",
+      ctaHref: "#catalogo",
+      image: "/images/hero-slide3.png",
+    },
   ],
 };
 
 // ----------------------------------------------------------------------------
-// Product Showcase Section
+// Product Showcase
 // ----------------------------------------------------------------------------
-
-export interface ProductFeature {
-  value: string;
-  label: string;
-}
-
-export interface ProductShowcaseConfig {
-  sectionLabel: string;
-  headingMain: string;
-  headingAccent: string;
-  productName: string;
-  description: string;
-  price: string;
-  features: ProductFeature[];
-  colorSwatches: string[];
-  colorSwatchesLabel: string;
-  ctaText: string;
-  ctaHref: string;
-  whatsappCta: string;
-  whatsappHref: string;
-  productImage: string;
-  productImageAlt: string;
-  decorativeText: string;
-}
-
-export const productShowcaseConfig: ProductShowcaseConfig = {
+export const productShowcaseConfig = {
   sectionLabel: "PRODUCTO DESTACADO",
-  headingMain: "AURUM",
-  headingAccent: "ROSA",
-  productName: "Eau de Parfum 100ml",
-  description: "Una fragancia oriental-amaderada que combina notas de rosa búlgara, ámbar dorado y sándalo de Mysore. Diseñada para quienes buscan elegancia atemporal y sofisticación en cada gota.",
-  price: "$2,499 MXN",
+  headingMain: "COLECCIÓN",
+  headingAccent: "ORO",
+  productName: "Eau de Parfum · 100ml",
+  description: "Una fusión de notas amaderadas y especias orientales, encapsulada en un frasco que evoca el lujo atemporal. Ideal para quienes buscan distinción sin comprometer su esencia.",
+  price: "Desde $89.900",
   features: [
-    { value: "12H", label: "Duración" },
-    { value: "100ml", label: "Contenido" },
-    { value: "EDP", label: "Concentración" },
+    { value: "30ml", label: "Cilindro" },
+    { value: "60ml", label: "Intermedio" },
+    { value: "100ml", label: "Grande" },
+    { value: "AAA", label: "Envase Lujo" },
   ],
-  colorSwatches: ["#D4AF37", "#FF69B4", "#8B4513", "#1a1a1a"],
-  colorSwatchesLabel: "Colección de Fragancias",
+  colorSwatches: ["#C9A15F", "#1A1A1D", "#F5F3EF", "#0B0B0C"],
+  colorSwatchesLabel: "Presentaciones disponibles",
   ctaText: "Comprar Ahora",
-  ctaHref: PAYMENT_LINK,
+  ctaHref: "#",
   whatsappCta: "Pedir por WhatsApp",
-  whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
+  whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF essence, quiero información sobre la Colección Oro")}`,
   productImage: "/images/product-perfume.png",
-  productImageAlt: "Perfume Aurum Rosa - Essence Premium",
-  decorativeText: "ESSENCE",
+  productImageAlt: "Perfume MIRF essence - Colección Oro",
+  decorativeText: "MIRF",
 };
 
 // ----------------------------------------------------------------------------
-// Color Palette Section - Colección de Fragancias
+// Color Palette (Catálogo de fragancias)
 // ----------------------------------------------------------------------------
-
-export interface ColorSwatch {
-  name: string;
-  nameSecondary: string;
-  color: string;
-  description: string;
-  price: string;
-  whatsappLink: string;
-}
-
-export interface ColorPaletteConfig {
-  sectionLabel: string;
-  headingMain: string;
-  headingAccent: string;
-  colors: ColorSwatch[];
-  bottomText: string;
-  decorativeText: string;
-}
-
-export const colorPaletteConfig: ColorPaletteConfig = {
+export const colorPaletteConfig = {
   sectionLabel: "NUESTRA COLECCIÓN",
   headingMain: "FRAGANCIAS",
   headingAccent: "SIGNATURE",
   colors: [
     {
-      name: "Aurum Rosa",
-      nameSecondary: "Oriental Floral",
-      color: "#D4AF37",
-      description: "Rosa búlgara, ámbar dorado, sándalo",
-      price: "$2,499",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Aurum Rosa")}`,
+      name: "Invictus",
+      nameSecondary: "Paco Rabanne",
+      color: "#C9A15F",
+      description: "Notas marinas, pomelo, laurel y ámbar gris. Fresca y poderosa.",
+      price: "Desde $79.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Invictus")}`,
     },
     {
-      name: "Velvet Noir",
-      nameSecondary: "Amaderado Intenso",
-      color: "#1a1a1a",
-      description: "Pachulí, vainilla negra, cuero",
-      price: "$2,299",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Velvet Noir")}`,
+      name: "Good Girl",
+      nameSecondary: "Carolina Herrera",
+      color: "#1A1A1D",
+      description: "Almendra, café, jazmín y haba tonka. Elegante y audaz.",
+      price: "Desde $89.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Good Girl")}`,
     },
     {
-      name: "Pink Saffron",
-      nameSecondary: "Floral Especiado",
-      color: "#FF69B4",
-      description: "Azafrán, peonía, almizcle blanco",
-      price: "$2,199",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Pink Saffron")}`,
+      name: "Yara",
+      nameSecondary: "Lattafa",
+      color: "#E5C98B",
+      description: "Frutas tropicales, vainilla, musk y sándalo. Dulce y envolvente.",
+      price: "Desde $69.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Yara")}`,
     },
     {
-      name: "Cedar Gold",
-      nameSecondary: "Amaderado Cítrico",
-      color: "#8B4513",
-      description: "Bergamota, cedro, vetiver",
-      price: "$1,999",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Cedar Gold")}`,
+      name: "9 PM",
+      nameSecondary: "Afnan",
+      color: "#2B2B2F",
+      description: "Manzana, canela, vainilla y ámbar. Cálida y sofisticada.",
+      price: "Desde $74.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre 9 PM")}`,
     },
     {
-      name: "Midnight Oud",
-      nameSecondary: "Oriental Intenso",
-      color: "#2F1B14",
-      description: "Oud, incienso, rosas negras",
-      price: "$2,799",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Midnight Oud")}`,
+      name: "Sauvage",
+      nameSecondary: "Dior",
+      color: "#0B0B0C",
+      description: "Bergamota, pimienta, lavanda y ámbar. Fresca y salvaje.",
+      price: "Desde $94.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Sauvage")}`,
     },
     {
-      name: "Crystal Bloom",
-      nameSecondary: "Floral Fresco",
-      color: "#E8E8E8",
-      description: "Lirio blanco, neroli, almizcle",
-      price: "$1,899",
-      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero comprar Crystal Bloom")}`,
+      name: "Club de Nuit",
+      nameSecondary: "Armaf",
+      color: "#C9A15F",
+      description: "Piña, bergamota, rosa y almizcle. Intensa y duradera.",
+      price: "Desde $79.900",
+      whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Club de Nuit")}`,
     },
   ],
-  bottomText: "Haz clic en cualquier fragancia para pedir por WhatsApp",
+  bottomText: "Haz clic en cualquier fragancia para pedir por WhatsApp · Envíos a toda Venezuela",
   decorativeText: "COLLECTION",
 };
 
 // ----------------------------------------------------------------------------
-// Finale / Brand Philosophy Section
+// Finale / Brand Philosophy
 // ----------------------------------------------------------------------------
-
-export interface FinaleConfig {
-  sectionLabel: string;
-  headingMain: string;
-  headingAccent: string;
-  tagline: string;
-  features: string[];
-  ctaText: string;
-  ctaHref: string;
-  whatsappCta: string;
-  whatsappHref: string;
-  image: string;
-  imageAlt: string;
-  decorativeText: string;
-}
-
-export const finaleConfig: FinaleConfig = {
-  sectionLabel: "FILOSOFÍA DE MARCA",
+export const finaleConfig = {
+  sectionLabel: "FILOSOFÍA MIRF",
   headingMain: "LA ESENCIA",
   headingAccent: "DEL LUJO",
-  tagline: "Cada fragancia Essence es una obra maestra creada con los ingredientes más finos del mundo. Nuestros perfumistas expertos combinan arte y ciencia para capturar emociones en cada frasco. Porque tu presencia merece ser recordada.",
+  tagline: "Creemos que el lujo no debe ser inalcanzable. Cada fragancia MIRF está diseñada para realzar tu presencia sin comprometer tu esencia. Nuestros perfumes combinan ingredientes premium con diseño exclusivo, a un precio que te permite multiplicar tu estilo.",
   features: [
-    "Ingredientes 100% originales",
-    "Cruelty-free & Vegan",
-    "Envío gratis en compras +$1,500",
-    "Muestra gratis con cada pedido",
+    "Ingredientes premium seleccionados",
+    "Diseño exclusivo tipo joya",
+    "Precio justo para emprendedores",
+    "Envíos a toda Colombia",
   ],
-  ctaText: "Comprar Colección",
-  ctaHref: PAYMENT_LINK,
+  ctaText: "Ver Colección",
+  ctaHref: "#catalogo",
   whatsappCta: "Asesoría Personalizada",
-  whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, me gustaría recibir asesoría personalizada para elegir mi fragancia")}`,
+  whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF essence, me gustaría recibir asesoría personalizada para elegir mi fragancia")}`,
   image: "/images/brand-portrait.jpg",
-  imageAlt: "Modelo con perfume Essence - Elegancia y sofisticación",
+  imageAlt: "MIRF essence - Elegancia y sofisticación",
   decorativeText: "LUXURY",
 };
 
 // ----------------------------------------------------------------------------
 // Footer
 // ----------------------------------------------------------------------------
-
-export interface SocialLink {
-  platform: "instagram" | "twitter" | "youtube";
-  href: string;
-  label: string;
-}
-
-export interface FooterLinkSection {
-  title: string;
-  links: string[];
-}
-
-export interface ContactInfo {
-  address: string;
-  phone: string;
-  email: string;
-}
-
-export interface LegalLink {
-  label: string;
-  href: string;
-}
-
-export interface FooterConfig {
-  logo: string;
-  logoAccent: string;
-  brandDescription: string;
-  socialLinks: SocialLink[];
-  linkSections: FooterLinkSection[];
-  contact: ContactInfo;
-  legalLinks: LegalLink[];
-  copyrightText: string;
-  decorativeText: string;
-  whatsappCta: string;
-  whatsappHref: string;
-}
-
-export const footerConfig: FooterConfig = {
-  logo: "ESSENCE",
-  logoAccent: "®",
-  brandDescription: "Fragancias premium diseñadas para quienes entienden que el verdadero lujo está en los detalles.",
+export const footerConfig = {
+  logo: "MIRF",
+  logoAccent: "essence",
+  brandDescription: "Lujo accesible en cada gota. Fragancias premium diseñadas para emprendedores que entienden que el verdadero estilo está en los detalles.",
   socialLinks: [
-    { platform: "instagram", href: "https://instagram.com/essence", label: "Instagram" },
-    { platform: "twitter", href: "https://twitter.com/essence", label: "Twitter" },
-    { platform: "youtube", href: "https://youtube.com/essence", label: "YouTube" },
+    { platform: "instagram", href: "https://instagram.com/mirfessence", label: "Instagram" },
+    { platform: "tiktok", href: "https://tiktok.com/@mirfessence", label: "TikTok" },
   ],
   linkSections: [
     {
       title: "Colección",
-      links: ["Aurum Rosa", "Velvet Noir", "Pink Saffron", "Cedar Gold", "Midnight Oud"],
+      links: ["Caballeros", "Damas", "Unisex", "Presentaciones AAA"],
     },
     {
       title: "Atención al Cliente",
-      links: ["Envíos y Entregas", "Devoluciones", "Preguntas Frecuentes", "Rastrear Pedido"],
+      links: ["Envíos y Entregas", "Preguntas Frecuentes", "Mayoristas", "Contacto"],
     },
     {
-      title: "Empresa",
-      links: ["Sobre Nosotros", "Carreras", "Prensa", "Contacto"],
+      title: "MIRF",
+      links: ["Sobre Nosotros", "Filosofía", "Catálogo", "Blog"],
     },
   ],
   contact: {
-    address: "Barinas-Venezuela",
-    phone: "+58 424-1234567",
-    email: "hola@essenceperfumes.com",
+    address: "Barinas - Venezuela",
+    phone: "+584125592798",
+    email: "hola@mirfessence.com",
   },
   legalLinks: [
     { label: "Términos de Servicio", href: "#" },
@@ -320,20 +214,4 @@ export const footerConfig: FooterConfig = {
   decorativeText: "ESSENCE",
   whatsappCta: "Pedir por WhatsApp",
   whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
-};
-
-// ----------------------------------------------------------------------------
-// Site Metadata
-// ----------------------------------------------------------------------------
-
-export interface SiteConfig {
-  title: string;
-  description: string;
-  language: string;
-}
-
-export const siteConfig: SiteConfig = {
-  title: "Essence - Perfumes Premium | Fragancias de Lujo",
-  description: "Descubre nuestra colección exclusiva de fragancias premium. Perfumes de autor con ingredientes finos del mundo. contactanos y acordamos tu pedido por WhatsApp.",
-  language: "es",
 };

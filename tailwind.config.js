@@ -5,48 +5,59 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        pink: {
-          DEFAULT: "#ff73c3",
-          dark: "#e055a8",
-          light: "#ff9dd4",
+        // Paleta MIRF official
+        gold: {
+          DEFAULT: "#C9A15F",
+          light: "#E5C98B",
+          dark: "#A88346",
         },
+        black: {
+          DEFAULT: "#0B0B0C",
+          card: "#1A1A1D",
+          soft: "#2B2B2F",
+        },
+        light: {
+          DEFAULT: "#F5F3EF",
+        },
+        // Variables de shadcn (mantenidas por compatibilidad)
+        border: "hsl(0 0% 20%)",
+        input: "hsl(0 0% 20%)",
+        ring: "hsl(40 45% 58%)",
+        background: "hsl(0 0% 4%)",
+        foreground: "hsl(40 30% 96%)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(40 45% 58%)",
+          foreground: "hsl(0 0% 4%)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(0 0% 15%)",
+          foreground: "hsl(40 30% 96%)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
-          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+          DEFAULT: "hsl(0 84% 60%)",
+          foreground: "hsl(40 30% 96%)",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "hsl(0 0% 15%)",
+          foreground: "hsl(40 20% 70%)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "hsl(40 45% 58%)",
+          foreground: "hsl(0 0% 4%)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(0 0% 10%)",
+          foreground: "hsl(40 30% 96%)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "hsl(0 0% 10%)",
+          foreground: "hsl(40 30% 96%)",
         },
       },
       fontFamily: {
-        display: ['Montserrat', 'sans-serif'],
-        body: ['Open Sans', 'sans-serif'],
+        display: ['Cinzel', 'serif'],
+        body: ['Poppins', 'sans-serif'],
+        accent: ['Cormorant Garamond', 'serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -57,8 +68,8 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        pink: "0 0 40px rgba(255, 115, 195, 0.4)",
-        "pink-lg": "0 0 60px rgba(255, 115, 195, 0.6)",
+        gold: "0 0 40px rgba(201, 161, 95, 0.2)",
+        "gold-lg": "0 0 60px rgba(201, 161, 95, 0.15)",
       },
       keyframes: {
         "accordion-down": {
@@ -73,53 +84,38 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
-        "pulse-pink": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.05)" },
-        },
-        "breathe": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.02)" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0)" },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
         },
         "flip-in": {
-          from: { 
+          from: {
             opacity: "0",
-            transform: "rotateX(90deg) translateY(-100px)"
+            transform: "rotateX(90deg) translateY(-100px)",
           },
-          to: { 
+          to: {
             opacity: "1",
-            transform: "rotateX(0) translateY(0)"
+            transform: "rotateX(0) translateY(0)",
           },
         },
         "slide-up": {
-          from: { 
+          from: {
             opacity: "0",
-            transform: "translateY(60px)"
+            transform: "translateY(60px)",
           },
-          to: { 
+          to: {
             opacity: "1",
-            transform: "translateY(0)"
+            transform: "translateY(0)",
           },
-        },
-        "grid-line-draw": {
-          from: { strokeDashoffset: "100%" },
-          to: { strokeDashoffset: "0%" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
-        "pulse-pink": "pulse-pink 4s ease-in-out infinite",
-        "breathe": "breathe 10s ease-in-out infinite",
-        "float": "float 3s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
         "flip-in": "flip-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "slide-up": "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "grid-line-draw": "grid-line-draw 1s ease-out forwards",
       },
       transitionTimingFunction: {
         "custom-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -127,5 +123,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [],
+};
