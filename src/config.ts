@@ -69,16 +69,17 @@ export const heroCinematicConfig = {
 // ----------------------------------------------------------------------------
 export const productShowcaseConfig = {
   sectionLabel: "PRODUCTO DESTACADO",
-  headingMain: "COLECCIÓN",
-  headingAccent: "ORO",
-  productName: "Eau de Parfum · 100ml",
-  description: "Una fusión de notas amaderadas y especias orientales, encapsulada en un frasco que evoca el lujo atemporal. Ideal para quienes buscan distinción sin comprometer su esencia.",
+  headingMain: "PACO RABANNE",
+  headingAccent: "  INVICTUS",
+  productName: "Invictus Glory · 100ml",
+  description: "La fragancia está diseñada para hombres seguros, activos y decididos, evocando fuerza, frescura y dinamismo. Es versátil, adecuada tanto para el día como para la noche.",
   price: "Desde $89.900",
   features: [
+    { value: "Original", label: "Envase Lujo" },
     { value: "30ml", label: "Cilindro" },
     { value: "60ml", label: "Intermedio" },
     { value: "100ml", label: "Grande" },
-    { value: "AAA", label: "Envase Lujo" },
+    
   ],
   colorSwatches: ["#C9A15F", "#1A1A1D", "#F5F3EF", "#0B0B0C"],
   colorSwatchesLabel: "Presentaciones disponibles",
@@ -86,7 +87,7 @@ export const productShowcaseConfig = {
   ctaHref: "#",
   whatsappCta: "Pedir por WhatsApp",
   whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF essence, quiero información sobre la Colección Oro")}`,
-  productImage: "/images/product-perfume.png",
+  productImage: "/images/product-perfume.PNG",
   productImageAlt: "Perfume MIRF essence - Colección Oro",
   decorativeText: "MIRF",
 };
@@ -97,7 +98,7 @@ export const productShowcaseConfig = {
 export const colorPaletteConfig = {
   sectionLabel: "NUESTRA COLECCIÓN",
   headingMain: "FRAGANCIAS",
-  headingAccent: "SIGNATURE",
+  headingAccent: "  SIGNATURE",
   colors: [
     {
       name: "Invictus",
@@ -158,13 +159,14 @@ export const colorPaletteConfig = {
 export const finaleConfig = {
   sectionLabel: "FILOSOFÍA MIRF",
   headingMain: "LA ESENCIA",
-  headingAccent: "DEL LUJO",
-  tagline: "Creemos que el lujo no debe ser inalcanzable. Cada fragancia MIRF está diseñada para realzar tu presencia sin comprometer tu esencia. Nuestros perfumes combinan ingredientes premium con diseño exclusivo, a un precio que te permite multiplicar tu estilo.",
+  headingAccent: "DE CRECER JUNTOS",
+  tagline: "MIRF essence nace para romper la barrera entre el lujo y las personas. Seleccionamos las fragancias más deseadas del mercado, con la calidad de las grandes marcas, pero a precios que permiten soñar, emprender y compartir. No fabricamos perfumes; creamos oportunidades para que tú y quienes te rodean descubran el poder de una buena esencia.",
+  tagline3: "Ya sea que quieras consentirte, regalar o iniciar tu propio camino en el mundo de los perfumes, aquí encuentras un aliado. Porque el verdadero lujo está en hacer lo que amas, oliendo como quieres.", 
   features: [
-    "Ingredientes premium seleccionados",
-    "Diseño exclusivo tipo joya",
-    "Precio justo para emprendedores",
-    "Envíos a toda Colombia",
+    "Diseño exclusivos y elegantes",
+    "Presentaciones al mejor precio",
+    "Entregas personales en Barinas",
+    "Envíos seguros a toda Venezuela",
   ],
   ctaText: "Ver Colección",
   ctaHref: "#catalogo",
