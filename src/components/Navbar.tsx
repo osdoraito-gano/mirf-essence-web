@@ -1,9 +1,14 @@
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+
 interface NavbarProps {
   activeView: string;
   onNavigate: (view: string) => void;
 }
 
 const Navbar = ({ activeView, onNavigate }: NavbarProps) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const tabs = [
     { id: 'home', label: 'Inicio' },
     { id: 'catalog', label: 'Catálogo' },
@@ -11,31 +16,30 @@ const Navbar = ({ activeView, onNavigate }: NavbarProps) => {
     { id: 'about', label: 'Nosotros' },
   ];
 
+  const handleNav = (view: string) => {
+    onNavigate(view);
+    setMobileOpen(false);
+  };
+
   return (
     <header className="w-full bg-[#0B0B0C] border-b border-[#C9A15F]/30 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* LOGO */}
         <div className="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="MIRF essence"
-            className="h-10 w-auto"
-          />
+          <img src="/logo.png" alt="MIRF essence" className="h-10 w-auto" />
           <span className="text-[#C9A15F] text-xl font-display tracking-wide">
             MIRF <span className="font-body italic text-[#E5C98B]">essence</span>
           </span>
         </div>
 
-        {/* MENU TABS */}
+        {/* DESKTOP TABS */}
         <nav className="hidden md:flex items-center gap-0">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => onNavigate(tab.id)}
+              onClick={() => handleNav(tab.id)}
               className={`relative px-5 py-3 text-sm font-body tracking-wide transition-all duration-300 ${
-                activeView === tab.id
-                  ? 'text-[#C9A15F]'
-                  : 'text-[#E5C98B]/70 hover:text-[#C9A15F]'
+                activeView === tab.id ? 'text-[#C9A15F]' : 'text-[#E5C98B]/70 hover:text-[#C9A15F]'
               }`}
             >
               {tab.label}
@@ -48,13 +52,54 @@ const Navbar = ({ activeView, onNavigate }: NavbarProps) => {
           ))}
         </nav>
 
-        {/* BOTÓN CTA */}
+        {/* DESKTOP CTA */}
         <div className="hidden md:block">
           <a
             href="https://wa.me/584125592798?text=Hola%20MIRF%20essence,%20quiero%20más%20información"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-[#C9A15F] text-[#C9A15F] px-5 py-2 rounded-full hover:bg-[#C9A15F] hover:text-black transition-all duration-300 font-body text-sm"
+          >
+            Contacto
+          </a>
+        </div>
+
+        {/* MOBILE HAMBURGER */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden text-[#C9A15F] p-2 rounded-md hover:bg-white/5 transition-colors"
+          aria-label="Menú"
+        >
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* MOBILE MENU */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-6 pb-6 pt-2 bg-[#0B0B0C] border-t border-[#C9A15F]/20 space-y-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleNav(tab.id)}
+              className={`block w-full text-left px-4 py-3 rounded-lg font-body text-sm tracking-wide transition-all ${
+                activeView === tab.id
+                  ? 'bg-gold/10 text-[#C9A15F] border-l-2 border-[#C9A15F]'
+                  : 'text-[#E5C98B]/80 hover:bg-white/5 hover:text-[#C9A15F]'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+          <a
+            href="https://wa.me/584125592798?text=Hola%20MIRF%20essence"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center mt-4 px-4 py-3 bg-[#C9A15F] text-black font-body text-sm rounded-full hover:bg-[#E5C98B] transition-all"
+            onClick={() => setMobileOpen(false)}
           >
             Contacto
           </a>
