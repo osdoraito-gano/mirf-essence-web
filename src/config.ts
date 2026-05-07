@@ -2,7 +2,7 @@
 // SITE CONFIGURATION - MIRF ESSENCE
 // ============================================================================
 
-// Número de WhatsApp para pedidos (CAMBIAR por el número real)
+// Número de WhatsApp para pedidos
 const WHATSAPP_NUMBER = "+584125592798";
 const WHATSAPP_MESSAGE = "Hola MIRF essence, estoy interesado en sus perfumes. Me gustaría recibir más información.";
 
@@ -73,7 +73,7 @@ export const productShowcaseConfig = {
   headingAccent: "  INVICTUS",
   productName: "Invictus Glory · 100ml",
   description: "La fragancia está diseñada para hombres seguros, activos y decididos, evocando fuerza, frescura y dinamismo. Es versátil, adecuada tanto para el día como para la noche.",
-  price: "Desde $89.900",
+  price: "Desde $10",
   features: [
     { value: "Original", label: "Envase Lujo" },
     { value: "30ml", label: "Cilindro" },
@@ -105,7 +105,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Paco Rabanne",
       color: "#C9A15F",
       description: "Notas marinas, pomelo, laurel y ámbar gris. Fresca y poderosa.",
-      price: "Desde $79.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Invictus")}`,
     },
     {
@@ -113,7 +113,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Carolina Herrera",
       color: "#1A1A1D",
       description: "Almendra, café, jazmín y haba tonka. Elegante y audaz.",
-      price: "Desde $89.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Good Girl")}`,
     },
     {
@@ -121,7 +121,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Lattafa",
       color: "#E5C98B",
       description: "Frutas tropicales, vainilla, musk y sándalo. Dulce y envolvente.",
-      price: "Desde $69.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Yara")}`,
     },
     {
@@ -129,7 +129,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Afnan",
       color: "#2B2B2F",
       description: "Manzana, canela, vainilla y ámbar. Cálida y sofisticada.",
-      price: "Desde $74.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre 9 PM")}`,
     },
     {
@@ -137,7 +137,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Dior",
       color: "#0B0B0C",
       description: "Bergamota, pimienta, lavanda y ámbar. Fresca y salvaje.",
-      price: "Desde $94.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Sauvage")}`,
     },
     {
@@ -145,7 +145,7 @@ export const colorPaletteConfig = {
       nameSecondary: "Armaf",
       color: "#C9A15F",
       description: "Piña, bergamota, rosa y almizcle. Intensa y duradera.",
-      price: "Desde $79.900",
+      price: "Desde $10",
       whatsappLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF, quiero información sobre Club de Nuit")}`,
     },
   ],

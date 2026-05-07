@@ -19,7 +19,7 @@ function App() {
   const handleNavigate = useCallback((view: string) => {
     setActiveView(view as any)
     if (view === 'home') {
-      setShowWelcome(true) // Reactivar el modal al volver a inicio
+      setShowWelcome(true)   // Solo al hacer clic en "Inicio" del Navbar
     } else {
       setShowWelcome(false)
     }
@@ -29,28 +29,36 @@ function App() {
     setShowWelcome(false)
   }, [])
 
+  // Función para hacer scroll a una sección dentro de la página Home sin disparar navegación
+  const handleScrollTo = useCallback((id: string) => {
+    // Primero aseguramos que estemos en la vista home (por si acaso)
+    setActiveView('home');
+    // No tocamos showWelcome, así que si está oculto, se queda oculto
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  }, []);
+
   return (
     <div className="relative bg-[#0B0B0C] min-h-screen overflow-x-hidden">
       <div className="grain-overlay" />
       <CustomCursor />
       <Navbar activeView={activeView} onNavigate={handleNavigate} />
-      
+
       {showWelcome && activeView === 'home' && (
-        <WelcomeModal onClose={handleCloseWelcome} />
+        <WelcomeModal onClose={handleCloseWelcome} onNavigate={handleNavigate} />
       )}
 
       <main className="relative">
-        {/* Landing Page (Inicio) */}
         {activeView === 'home' && (
           <>
-            <HeroCinematic />
+            <HeroCinematic onNavigate={handleNavigate} onScrollTo={handleScrollTo} />
             <ProductShowcase />
             <ColorPalette />
             <Finale />
           </>
         )}
 
-        {/* Catálogo */}
         {activeView === 'catalog' && (
           <>
             <ProductInfoSection />
@@ -58,7 +66,6 @@ function App() {
           </>
         )}
 
-        {/* Promociones (en construcción) */}
         {activeView === 'promos' && (
           <section className="min-h-screen flex items-center justify-center text-center text-light/60 py-20">
             <div>
@@ -69,7 +76,6 @@ function App() {
           </section>
         )}
 
-        {/* Nosotros (en construcción) */}
         {activeView === 'about' && (
           <section className="min-h-screen flex items-center justify-center text-center text-light/60 py-20">
             <div>
@@ -84,7 +90,7 @@ function App() {
       </main>
 
       <WhatsAppFloat
-        phoneNumber="584125592798"
+        phoneNumber="+584125592798"
         message="Hola MIRF essence, estoy interesado en sus perfumes. Me gustaría recibir más información."
       />
     </div>

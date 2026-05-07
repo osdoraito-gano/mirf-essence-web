@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { catalogData } from '../data/catalogData';
 
-const WHATSAPP_NUMBER = "573001234567"; // Reemplaza con el real
+const WHATSAPP_NUMBER = "+584125592798";
 
 const CatalogFull = () => {
   const [activeTab, setActiveTab] = useState<'caballeros' | 'damas' | 'unisex'>('caballeros');
@@ -14,12 +14,14 @@ const CatalogFull = () => {
   return (
     <section id="catalogo" className="py-20 px-6 bg-[#0B0B0C]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-display text-4xl md:text-5xl text-center text-gold mb-4">
-          Nuestra <span className="text-white">Colección Completa</span>
-        </h2>
-        <p className="text-center text-light/60 font-body mb-12">
-          Elige entre cientos de referencias. Todas con garantía de calidad y disponibles en AAA y cilindros.
-        </p>
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl text-gold mb-4">
+            Nuestra <span className="text-white">Colección Completa</span>
+          </h2>
+          <p className="font-body text-light/60 text-lg max-w-2xl mx-auto">
+            Elige entre cientos de referencias. Todas con garantía de calidad y disponibles en AAA y cilindros.
+          </p>
+        </div>
 
         {/* Tabs */}
         <div className="flex justify-center gap-4 mb-12">
@@ -36,22 +38,23 @@ const CatalogFull = () => {
           ))}
         </div>
 
-        {/* Grid */}
+        {/* Grid de productos */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {catalogData[activeTab].map((item, idx) => (
             <div
               key={idx}
               className="card-premium flex flex-col items-center text-center p-4 group"
             >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-24 h-24 object-contain mb-4 group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  // Fallback a imagen genérica si no hay archivo
-                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/100x100/1A1A1D/C9A15F?text=Perfume';
-                }}
-              />
+              <div className="w-24 h-24 mb-4 relative flex items-center justify-center">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/100x100/1A1A1D/C9A15F?text=Perfume';
+                  }}
+                />
+              </div>
               <h3 className="font-display text-sm text-gold mt-2">{item.brand}</h3>
               <p className="font-body text-xs text-light/80 mt-1">{item.name}</p>
               <button
