@@ -30,7 +30,7 @@ const WelcomeModal = ({ onClose, onNavigate }: WelcomeModalProps) => {
         </div>
 
         <div className="p-8 pt-4 text-center">
-          <span className="font-accent text-gold text-2xl italic">🌸 11 de Mayo</span>
+          <span className="font-accent text-gold text-2xl italic">🌸 10 de Mayo</span>
           <h2 className="font-display text-3xl md:text-4xl text-gold mt-3 mb-4">¡Feliz Día<br />de las Madres!</h2>
           <p className="text-light/80 font-body mb-6">
             Sorprende a mamá con la esencia que merece. Fragancias AAA y cilíndricas con <strong className="text-gold">descuentos especiales</strong> por lanzamiento.
