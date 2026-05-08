@@ -87,7 +87,7 @@ export const productShowcaseConfig = {
   ctaHref: "#",
   whatsappCta: "Pedir por WhatsApp",
   whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola MIRF essence, quiero información sobre la Colección Oro")}`,
-  productImage: "/images/product-perfume.PNG",
+  productImage: "/images/producto-hero.PNG",
   productImageAlt: "Perfume MIRF essence - Colección Oro",
   decorativeText: "MIRF",
 };
