@@ -96,7 +96,7 @@ function App() {
                 
                 <div className="relative z-10">
                   <h3 className="font-display text-2xl md:text-3xl text-white text-center mb-8">
-                    Por la compra de tu perfume favorito<br />en presentación de <span className="text-gold">30 ml</span>
+                    Aprovecha la compra de tu perfume favorito<br />en presentación de <span className="text-gold">30 ml</span>
                   </h3>
                   
                   {/* Precio único */}
