@@ -74,12 +74,70 @@ function App() {
           </>
         )}
 
-        {activeView === 'promos' && (
-          <section className="min-h-screen flex items-center justify-center text-center text-light/60 py-20">
-            <div>
-              <i className="fas fa-gift text-6xl text-gold/20 mb-6 block" />
-              <h2 className="font-display text-3xl text-gold mb-4">Promociones</h2>
-              <p className="font-body text-lg">Estamos preparando ofertas increíbles para ti.<br />¡Vuelve pronto!</p>
+                {activeView === 'promos' && (
+          <section id="promos" className="min-h-screen bg-[#0B0B0C] py-16 px-6">
+            <div className="max-w-3xl mx-auto">
+              
+              {/* Fecha y título */}
+              <div className="text-center mb-12">
+                <span className="font-accent text-gold/80 text-xl italic">12 de Mayo</span>
+                <h2 className="font-display text-4xl md:text-5xl text-gold mt-2 mb-4">
+                  Día Internacional<br />de los Enfermeros
+                </h2>
+                <p className="font-body text-light/70 text-lg max-w-xl mx-auto">
+                  Gracias por cuidar, inspirar y transformar vidas cada día.
+                </p>
+              </div>
+
+              {/* Tarjeta de la oferta */}
+              <div className="bg-[#1A1A1D] border border-gold/30 rounded-2xl p-8 md:p-10 mb-10 relative overflow-hidden">
+                {/* Brillo decorativo */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <h3 className="font-display text-2xl md:text-3xl text-white text-center mb-8">
+                    Por la compra de tu perfume favorito<br />en presentación de <span className="text-gold">30 ml</span>
+                  </h3>
+                  
+                  {/* Precios */}
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    <div className="bg-[#0B0B0C] rounded-xl p-6 text-center border border-[#2B2B2F]">
+                      <span className="font-accent text-gold/60 text-sm italic">1 unidad</span>
+                      <p className="font-display text-5xl md:text-6xl text-gold mt-2">$10</p>
+                      <p className="font-body text-light/50 text-sm mt-1">30 ml</p>
+                    </div>
+                    <div className="bg-[#0B0B0C] rounded-xl p-6 text-center border border-gold/40 relative">
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-body px-3 py-1 rounded-full uppercase tracking-wider">
+                        Recomendado
+                      </span>
+                      <span className="font-accent text-gold/60 text-sm italic">2 o más</span>
+                      <p className="font-display text-5xl md:text-6xl text-gold mt-2">$9</p>
+                      <p className="font-body text-light/50 text-sm mt-1">cada 30 ml</p>
+                    </div>
+                  </div>
+
+                  <p className="text-center font-body text-light/40 text-xs mb-8">
+                    *Esencia en referencias seleccionadas
+                  </p>
+
+                  {/* Botón CTA */}
+                  <div className="text-center">
+                    <a
+                      href={`https://wa.me/+584125592798?text=${encodeURIComponent("Hola MIRF essence, quiero aprovechar la promoción del Día de la Enfermería. Deseo información sobre los perfumes disponibles.")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-premium inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-black font-display font-semibold rounded-full hover:bg-gold-light transition-all text-lg"
+                    >
+                      <i className="fab fa-whatsapp" /> Pedir por WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pie de página de la sección */}
+              <p className="text-center text-light/30 text-xs font-body">
+                Promoción válida el 12 de mayo de 2025 · mirfessence.com
+              </p>
             </div>
           </section>
         )}
