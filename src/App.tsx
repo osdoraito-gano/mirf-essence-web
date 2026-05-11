@@ -45,9 +45,11 @@ function App() {
       <CustomCursor />
       <Navbar activeView={activeView} onNavigate={handleNavigate} />
 
+      {/* WelcomeModalDesactivadoTemporalmente - Reactivar el 12 de mayo
       {showWelcome && activeView === 'home' && (
         <WelcomeModal onClose={handleCloseWelcome} onNavigate={handleNavigate} />
       )}
+      */}
 
       <main className="relative">
         {activeView === 'home' && (
