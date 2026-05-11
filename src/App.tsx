@@ -12,32 +12,31 @@ import CatalogFull from './sections/CatalogFull'
 import Finale from './sections/Finale'
 import Footer from './sections/Footer'
 
+// ===== CONFIGURACIÓN DE CAMPAÑA =====
+// Cambia 'campaign' por 'madres', 'enfermeria' o null para desactivar
+const getActiveCampaign = (): 'madres' | 'enfermeria' | null => {
+  const today = new Date();
+  // Activar campaña de enfermería desde el 12 de mayo en adelante
+  if (today >= new Date('2025-05-12')) {
+    return 'enfermeria';
+  }
+  // Para el Día de las Madres (11 de mayo) ya pasó, así que no se activa.
+  // Si quisiéramos usarla en otro momento, pondríamos la condición aquí.
+  return null;
+};
+
 function App() {
-  const [activeView, setActiveView] = useState<'home' | 'catalog' | 'promos' | 'about'>('home')
-  const [showWelcome, setShowWelcome] = useState(true)
+  const [activeView, setActiveView] = useState<'home' | 'catalog' | 'promos' | 'about'>('home');
+  const [modalClosed, setModalClosed] = useState(false);
+
+  const campaign = getActiveCampaign();
+  const showModal = campaign !== null && !modalClosed;
 
   const handleNavigate = useCallback((view: string) => {
-    setActiveView(view as any)
-    if (view === 'home') {
-      setShowWelcome(true)   // Solo al hacer clic en "Inicio" del Navbar
-    } else {
-      setShowWelcome(false)
-    }
-  }, [])
-
-  const handleCloseWelcome = useCallback(() => {
-    setShowWelcome(false)
-  }, [])
-
-  // Función para hacer scroll a una sección dentro de la página Home sin disparar navegación
-  const handleScrollTo = useCallback((id: string) => {
-    // Primero aseguramos que estemos en la vista home (por si acaso)
-    setActiveView('home');
-    // No tocamos showWelcome, así que si está oculto, se queda oculto
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+    setActiveView(view as any);
   }, []);
+
+  const handleCloseModal = () => setModalClosed(true);
 
   return (
     <div className="relative bg-[#0B0B0C] min-h-screen overflow-x-hidden">
@@ -45,16 +44,18 @@ function App() {
       <CustomCursor />
       <Navbar activeView={activeView} onNavigate={handleNavigate} />
 
-      {/* WelcomeModalDesactivadoTemporalmente - Reactivar el 12 de mayo
-      {showWelcome && activeView === 'home' && (
-        <WelcomeModal onClose={handleCloseWelcome} onNavigate={handleNavigate} />
+      {/* Modal de campaña (controlado por fecha) */}
+      {showModal && (
+        <WelcomeModal
+          onClose={handleCloseModal}
+          onNavigate={handleNavigate}
+        />
       )}
-      */}
 
       <main className="relative">
         {activeView === 'home' && (
           <>
-            <HeroCinematic onNavigate={handleNavigate} onScrollTo={handleScrollTo} />
+            <HeroCinematic onNavigate={handleNavigate} onScrollTo={(id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })} />
             <ProductShowcase />
             <ColorPalette />
             <Finale />
