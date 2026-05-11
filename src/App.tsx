@@ -72,9 +72,9 @@ function App() {
             <ProductInfoSection />
             <CatalogFull />
           </>
-        )}
 
-                {activeView === 'promos' && (
+        )}
+        {activeView === 'promos' && (
           <section id="promos" className="min-h-screen bg-[#0B0B0C] py-16 px-6">
             <div className="max-w-3xl mx-auto">
               
@@ -99,31 +99,23 @@ function App() {
                     Por la compra de tu perfume favorito<br />en presentación de <span className="text-gold">30 ml</span>
                   </h3>
                   
-                  {/* Precios */}
-                  <div className="grid md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-[#0B0B0C] rounded-xl p-6 text-center border border-[#2B2B2F]">
-                      <span className="font-accent text-gold/60 text-sm italic">1 unidad</span>
-                      <p className="font-display text-5xl md:text-6xl text-gold mt-2">$10</p>
-                      <p className="font-body text-light/50 text-sm mt-1">30 ml</p>
-                    </div>
-                    <div className="bg-[#0B0B0C] rounded-xl p-6 text-center border border-gold/40 relative">
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-body px-3 py-1 rounded-full uppercase tracking-wider">
-                        Recomendado
-                      </span>
-                      <span className="font-accent text-gold/60 text-sm italic">2 o más</span>
-                      <p className="font-display text-5xl md:text-6xl text-gold mt-2">$9</p>
-                      <p className="font-body text-light/50 text-sm mt-1">cada 30 ml</p>
+                  {/* Precio único */}
+                  <div className="flex justify-center mb-8">
+                    <div className="bg-[#0B0B0C] rounded-xl p-8 text-center border border-gold/40 max-w-xs w-full">
+                      <span className="font-accent text-gold/60 text-sm italic">Por solo</span>
+                      <p className="font-display text-6xl md:text-7xl text-gold mt-2">$9</p>
+                      <p className="font-body text-light/50 text-sm mt-2">cada 30 ml</p>
                     </div>
                   </div>
 
                   <p className="text-center font-body text-light/40 text-xs mb-8">
-                    *Esencia en referencias seleccionadas
+                    *Esencia en referencias seleccionadas · Promoción válida solo el 12 de mayo
                   </p>
 
                   {/* Botón CTA */}
                   <div className="text-center">
                     <a
-                      href={`https://wa.me/+584125592798?text=${encodeURIComponent("Hola MIRF essence, quiero aprovechar la promoción del Día de la Enfermería. Deseo información sobre los perfumes disponibles.")}`}
+                      href={`https://wa.me/+584125592798?text=${encodeURIComponent("Hola MIRF essence, quiero aprovechar la promoción del Día de la Enfermería. Deseo información sobre los perfumes disponibles a $9.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-premium inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-black font-display font-semibold rounded-full hover:bg-gold-light transition-all text-lg"
@@ -141,6 +133,7 @@ function App() {
             </div>
           </section>
         )}
+      
 
         {activeView === 'about' && (
           <section className="min-h-screen flex items-center justify-center text-center text-light/60 py-20">
