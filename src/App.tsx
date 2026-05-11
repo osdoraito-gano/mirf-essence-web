@@ -12,16 +12,16 @@ import CatalogFull from './sections/CatalogFull'
 import Finale from './sections/Finale'
 import Footer from './sections/Footer'
 
-// ===== CONFIGURACIÓN DE CAMPAÑA =====
-// Cambia 'campaign' por 'madres', 'enfermeria' o null para desactivar
+
+// Función original (se usará cuando no quieras forzar)
 const getActiveCampaign = (): 'madres' | 'enfermeria' | null => {
+  // Si hay una campaña forzada, la devuelve directamente
+
+  
   const today = new Date();
-  // Activar campaña de enfermería desde el 12 de mayo en adelante
   if (today >= new Date('2025-05-12')) {
     return 'enfermeria';
   }
-  // Para el Día de las Madres (11 de mayo) ya pasó, así que no se activa.
-  // Si quisiéramos usarla en otro momento, pondríamos la condición aquí.
   return null;
 };
 
@@ -34,6 +34,10 @@ function App() {
 
   const handleNavigate = useCallback((view: string) => {
     setActiveView(view as any);
+    // Al navegar a 'home' mostramos el modal de nuevo si la campaña está activa
+    if (view === 'home') {
+      setModalClosed(false);
+    }
   }, []);
 
   const handleCloseModal = () => setModalClosed(true);
@@ -44,9 +48,10 @@ function App() {
       <CustomCursor />
       <Navbar activeView={activeView} onNavigate={handleNavigate} />
 
-      {/* Modal de campaña (controlado por fecha) */}
+      {/* Modal de campaña (controlado por FORCE_CAMPAIGN o fecha) */}
       {showModal && (
         <WelcomeModal
+          campaign={campaign}
           onClose={handleCloseModal}
           onNavigate={handleNavigate}
         />
@@ -55,7 +60,7 @@ function App() {
       <main className="relative">
         {activeView === 'home' && (
           <>
-            <HeroCinematic onNavigate={handleNavigate} onScrollTo={(id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })} />
+            <HeroCinematic onNavigate={handleNavigate} onScrollTo={(id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })} />
             <ProductShowcase />
             <ColorPalette />
             <Finale />
