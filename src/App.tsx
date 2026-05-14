@@ -12,29 +12,13 @@ import CatalogFull from './sections/CatalogFull'
 import Finale from './sections/Finale'
 import Footer from './sections/Footer'
 
-
-// Función original (se usará cuando no quieras forzar)
-const getActiveCampaign = (): 'madres' | 'enfermeria' | null => {
-  // Si hay una campaña forzada, la devuelve directamente
-
-  
-  const today = new Date();
-  if (today >= new Date('2025-05-12')) {
-    return 'enfermeria';
-  }
-  return null;
-};
-
 function App() {
   const [activeView, setActiveView] = useState<'home' | 'catalog' | 'promos' | 'about'>('home');
   const [modalClosed, setModalClosed] = useState(false);
 
-  const campaign = getActiveCampaign();
-  const showModal = campaign !== null && !modalClosed;
-
   const handleNavigate = useCallback((view: string) => {
     setActiveView(view as any);
-    // Al navegar a 'home' mostramos el modal de nuevo si la campaña está activa
+    // Al navegar a 'home' mostramos el modal de bienvenida otra vez (si no se cerró antes)
     if (view === 'home') {
       setModalClosed(false);
     }
@@ -48,13 +32,9 @@ function App() {
       <CustomCursor />
       <Navbar activeView={activeView} onNavigate={handleNavigate} />
 
-      {/* Modal de campaña (controlado por FORCE_CAMPAIGN o fecha) */}
-      {showModal && (
-        <WelcomeModal
-          campaign={campaign}
-          onClose={handleCloseModal}
-          onNavigate={handleNavigate}
-        />
+      {/* Modal de bienvenida genérico (solo en home y si no se cerró) */}
+      {activeView === 'home' && !modalClosed && (
+        <WelcomeModal onClose={handleCloseModal} onNavigate={handleNavigate} />
       )}
 
       <main className="relative">
@@ -72,20 +52,20 @@ function App() {
             <ProductInfoSection />
             <CatalogFull />
           </>
-
         )}
+
         {activeView === 'promos' && (
           <section id="promos" className="min-h-screen bg-[#0B0B0C] py-16 px-6">
             <div className="max-w-3xl mx-auto">
               
               {/* Fecha y título */}
               <div className="text-center mb-12">
-                <span className="font-accent text-gold/80 text-xl italic">12 de Mayo</span>
+                <span className="font-accent text-gold/80 text-xl italic">Promocion mes de lanzamiento</span>
                 <h2 className="font-display text-4xl md:text-5xl text-gold mt-2 mb-4">
-                  Día Internacional<br />de los Enfermeros
+                  Aprovecha Nuestra<br />Promocion
                 </h2>
                 <p className="font-body text-light/70 text-lg max-w-xl mx-auto">
-                  Gracias por cuidar, inspirar y transformar vidas cada día.
+                  Gracias por ser parte de esta experiencia única. Celebra con nosotros el lanzamiento de MIRF essence con una oferta exclusiva en nuestra presentación de 30 ml. ¡No te lo pierdas!
                 </p>
               </div>
 
@@ -102,20 +82,20 @@ function App() {
                   {/* Precio único */}
                   <div className="flex justify-center mb-8">
                     <div className="bg-[#0B0B0C] rounded-xl p-8 text-center border border-gold/40 max-w-xs w-full">
-                      <span className="font-accent text-gold/60 text-sm italic">Por solo</span>
+                      <span className="font-accent text-gold/60 text-sm italic">Por la compra de 2 o más te quedarán por solo</span>
                       <p className="font-display text-6xl md:text-7xl text-gold mt-2">$9</p>
-                      <p className="font-body text-light/50 text-sm mt-2">cada 30 ml</p>
+                      <p className="font-body text-light/50 text-sm mt-2">referencia de 30 ml</p>
                     </div>
                   </div>
 
                   <p className="text-center font-body text-light/40 text-xs mb-8">
-                    *Esencia en referencias seleccionadas · Promoción válida solo el 12 de mayo
+                    *Pregunta por tu perfume favorito y llevalo en descuento · Promoción válida solo por este mes de lanzamiento*
                   </p>
 
                   {/* Botón CTA */}
                   <div className="text-center">
                     <a
-                      href={`https://wa.me/+584125592798?text=${encodeURIComponent("Hola MIRF essence, quiero aprovechar la promoción del Día de la Enfermería. Deseo información sobre los perfumes disponibles a $9.")}`}
+                      href={`https://wa.me/+584125592798?text=${encodeURIComponent("Hola MIRF essence, quiero aprovechar la promoción de mes de lanzamiento. Deseo información sobre los perfumes disponibles a $9.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-premium inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-black font-display font-semibold rounded-full hover:bg-gold-light transition-all text-lg"
@@ -128,12 +108,11 @@ function App() {
 
               {/* Pie de página de la sección */}
               <p className="text-center text-light/30 text-xs font-body">
-                Promoción válida el 12 de mayo de 2025 · mirfessence.com
+                Promoción válida hasta el 31 de mayo de 2026 · mirfessence.com
               </p>
             </div>
           </section>
         )}
-      
 
         {activeView === 'about' && (
           <section className="min-h-screen flex items-center justify-center text-center text-light/60 py-20">
